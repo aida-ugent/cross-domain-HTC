@@ -7,7 +7,7 @@ This repository is the companion repository for the paper ``Your Next State-of-t
 
 ## 📊 Datasets
 
-This repository contains a collection of seven diverse datasets for hierarchical text classification, spanning legal, scientific, medical, and patent domains. Each dataset comes with gold-standard taxonomies, making them ideal for developing and evaluating hierarchical text classification methods.
+We provide a collection of seven diverse datasets for hierarchical text classification, spanning legal, scientific, medical, and patent domains. Each dataset comes with gold-standard taxonomies, making them ideal for developing and evaluating hierarchical text classification methods.
 
 
 | Dataset | Domain | Documents | Labels | Hierarchy Depth | Avg Length |
@@ -28,6 +28,7 @@ Please fill the [Consent Form](https://forms.gle/PAAA8z2JYMNjeKRo9) to get acces
 
 
 ## 💻 Code
-Coming soon.
+
+Please see [src/README.md](src/README.md) for more details.
 
 ## 📚 Citation
