@@ -1,8 +1,8 @@
 # Cross-Domain Resources for Text Classification with Hierarchical Labels
 
-This repository is the companion repository for the paper ``Your Next State-of-the-Art Could Come from Another Domain: A Cross-Domain Analysis of Hierarchical Text Classification.''
+This repository is the companion for the paper ``Your Next State-of-the-Art Could Come from Another Domain: A Cross-Domain Analysis of Hierarchical Text Classification.''
 
-[![arXiv](https://img.shields.io/badge/arXiv-2024.xxxxx-b31b1b.svg)](https://arxiv.org/abs/2024.xxxxx)
+[![arXiv](https://img.shields.io/badge/arXiv-2412.12744-b31b1b.svg)](https://arxiv.org/abs/2412.12744)
 
 
 ## 📊 Datasets
@@ -20,7 +20,7 @@ We provide a collection of seven diverse datasets for hierarchical text classifi
 | MIMIC3-3681 | Medical | 52,712 | 3,681 | 3* | 1,514 |
 | USPTO2M-632 | Patent | 1,998,408 | 632 | 2* | 117 |
 
-\* Expanded hierarchy for certain methods (see documentation)
+\* Expanded hierarchy for certain methods (see paper for details)
 
 
 ### 🚀 Getting Started
@@ -32,3 +32,17 @@ Please fill the [Consent Form](https://forms.gle/PAAA8z2JYMNjeKRo9) to get acces
 Please see [src/README.md](src/README.md) for more details.
 
 ## 📚 Citation
+
+If you find this repository useful, please cite our paper:
+
+```
+@misc{li2024stateoftheartcomedomaincrossdomain,
+      title={Your Next State-of-the-Art Could Come from Another Domain: A Cross-Domain Analysis of Hierarchical Text Classification}, 
+      author={Nan Li and Bo Kang and Tijl De Bie},
+      year={2024},
+      eprint={2412.12744},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2412.12744}, 
+}
+```
