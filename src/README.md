@@ -6,6 +6,9 @@ This folder contains the code and instructions accompanying our paper "Your Next
 
 Each method is contained in its own directory with accompanying documentation:
 
+## Data Preprocess 📂
+
+See [data_preprocess/README.md](data_preprocess/README.md)
 
 ## Evaluation 📊
 
@@ -16,7 +19,7 @@ For consistent evaluation across all methods:
 ## Coming Soon 🚀
 
 This repository is under active development. Upcoming additions include:
-- 🔧 Detailed data preprocessing scripts and documentation
+- 🔧 Detailed data preprocessing scripts
 - 📚 Step-by-step implementation instructions
 - 📔 Example notebooks
 
