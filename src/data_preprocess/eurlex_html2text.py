@@ -117,6 +117,7 @@ def load_and_merge_labels(df_keep, data_dir):
         pandas.DataFrame: Merged DataFrame with all labels
     """
     # Load DC labels
+    print(f"Loading DC labels ...")
     dc_file = os.path.join(data_dir, 'id2class/id2class_eurlex_DC_leaves.qrels')
     df_dc = pd.read_csv(dc_file, sep=' ', header=None)
     df_dc.columns = ['DC', 'DocID', 'Drop']
@@ -128,8 +129,10 @@ def load_and_merge_labels(df_keep, data_dir):
     # Merge DC labels with extracted text
     merged_df = df_dc_grouped.merge(df_keep, on='DocID', how='right')
     merged_df['DC'] = merged_df['DC'].apply(lambda x: x if isinstance(x, list) else [])
-    
+    print("Done merging DC labels")
+
     # Load EuroVoc labels
+    print(f"Loading EuroVoc labels ...")
     eurovoc_file = os.path.join(data_dir, 'id2class/id2class_eurlex_eurovoc.qrels')
     df_eurovoc = pd.read_csv(eurovoc_file, sep=' ', header=None)
     df_eurovoc.columns = ['EuroVoc', 'DocID', 'Drop']
@@ -141,8 +144,10 @@ def load_and_merge_labels(df_keep, data_dir):
     # Merge EuroVoc labels with the merged DataFrame
     merged_df = df_eurovoc_grouped.merge(merged_df, on='DocID', how='right')
     merged_df['EuroVoc'] = merged_df['EuroVoc'].apply(lambda x: x if isinstance(x, list) else [])
-    
+    print("Done merging EuroVoc labels")
+
     # Load Subject Matter labels
+    print(f"Loading Subject Matter labels ...")
     sm_file = os.path.join(data_dir, 'id2class/id2class_eurlex_subject_matter.qrels')
     df_sm = pd.read_csv(sm_file, sep=' ', header=None)
     df_sm.columns = ['SM', 'DocID', 'Drop']
@@ -154,7 +159,7 @@ def load_and_merge_labels(df_keep, data_dir):
     # Merge Subject Matter labels with the merged DataFrame
     merged_df = df_sm_grouped.merge(merged_df, on='DocID', how='right')
     merged_df['SM'] = merged_df['SM'].apply(lambda x: x if isinstance(x, list) else [])
-    
+    print("Done merging Subject Matter labels")
     # Remove 'remove' column if it exists
     if 'remove' in merged_df.columns:
         merged_df.drop('remove', axis=1, inplace=True)
@@ -186,59 +191,5 @@ def main():
     print("Done!")
 
 
-
-def test_preprocessing():
-    """
-    Test the preprocessing functions with the paths from the notebook.
-    """
-    # Define paths from the notebook
-    mapping_file = '/home/bkang/nextcloud/xhmc-datasets/Eurlex-Original/eurlex_ID_mappings.csv'
-    html_dir = '/home/bkang/nextcloud/xhmc-datasets/Eurlex-Original/htmls'
-    data_dir = '/home/bkang/nextcloud/xhmc-datasets/Eurlex-Original'
-    output_file = 'eurlex_labeled_df.pkl'
-    
-    # Check if files exist
-    if not os.path.exists(mapping_file):
-        print(f"Warning: Mapping file {mapping_file} does not exist.")
-        return
-    
-    if not os.path.exists(html_dir):
-        print(f"Warning: HTML directory {html_dir} does not exist.")
-        return
-    
-    if not os.path.exists(data_dir):
-        print(f"Warning: Data directory {data_dir} does not exist.")
-        return
-    
-    # Process HTML files
-    print("Extracting text from HTML files...")
-    df_keep = process_html_files(mapping_file, html_dir)
-    print(f"Extracted text from {len(df_keep)} files.")
-    
-    # Load and merge labels
-    print("Loading and merging label data...")
-    merged_df = load_and_merge_labels(df_keep, data_dir)
-    print(f"Merged DataFrame has {len(merged_df)} rows and {len(merged_df.columns)} columns.")
-    
-    # Display sample data
-    print("\nSample data:")
-    print(merged_df.head())
-    
-    # Display column statistics
-    print("\nColumn statistics:")
-    for col in ['DC', 'EuroVoc', 'SM']:
-        if col in merged_df.columns:
-            lengths = merged_df[col].apply(len)
-            print(f"{col}: min={lengths.min()}, max={lengths.max()}, avg={lengths.mean():.2f}")
-    
-    # Save the merged DataFrame to pickle
-    print(f"\nSaving processed data to {output_file}...")
-    merged_df.to_pickle(output_file, protocol=4)
-    
-    print("Done!")
-
-
 if __name__ == "__main__":
-    # main()
-
-    test_preprocessing()
+    main()
